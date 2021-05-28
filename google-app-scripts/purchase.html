@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="row">
+		<form id="product_form" class="col s12" onsubmit="submitProduct(this);">
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="product_name" name="product_name" type="text" class="validate" required>
+					<label for="product_name">Product name*</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="product_unit_price" name="product_unit_price" type="number" class="validate" required>
+					<label for="product_unit_price">Unit price*</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="product_quantity" name="product_quantity" type="number" class="validate" required>
+					<label for="product_quantity">Quantity*</label>
+				</div>
+			</div>
+			<button id="btn" class="waves-effect waves-light btn-small darken-3">
+          <i class="material-icons left">chevron_right</i>
+          Add product
+        </button>
+		</form>
+	</div>
+</div>
+
+<script>
+	function submitProduct(formObject) {
+      google.script.run.withSuccessHandler(resetForm).submitProduct(formObject);
+    }
+
+    function resetForm() {
+      M.toast({html: 'Product was added successfully.', classes: 'rounded'});
+      document.getElementById("product_form").reset();
+    }
+</script>
