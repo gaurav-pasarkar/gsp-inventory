@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<base target="_top">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		media="screen,projection">
+
+	<style>
+		nav.top-nav {
+			height: 110px;
+			-webkit-box-shadow: none;
+			box-shadow: none;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+			background-color: transparent;
+		}
+
+		nav.top-nav h1.header {
+			margin: 0;
+			padding-top: 22px;
+		}
+
+		@media only screen and (max-width: 992px) {
+			header,
+			main,
+			footer {
+				padding-left: 0 !important;
+			}
+		}
+
+		a.sidenav-trigger.top-nav {
+			position: absolute;
+			text-align: center;
+			height: 48px;
+			width: 48px;
+			top: 28px;
+			float: none;
+			color: #f3989b;
+			font-size: 36px;
+			z-index: 2;
+		}
+
+		.header {
+			text-align: center;
+			color: #ee6e73;
+			font-weight: 300;
+		}
+
+		a.sidenav-trigger.top-nav i {
+			font-size: 32px;
+		}
+
+		body {
+			display: flex;
+			min-height: 100vh;
+			flex-direction: column;
+		}
+
+		main {
+			flex: 1 0 auto;
+		}
+
+		header,
+		main,
+		footer {
+			padding-left: 300px;
+		}
+	</style>
+	<script>
+		function preventFormSubmit() {
+        var forms = document.querySelectorAll('form');
+        for (var i = 0; i < forms.length; i++) {
+          forms[i].addEventListener('submit', function(event) {
+            event.preventDefault();
+          });
+        }
+      }
+    window.addEventListener('load', preventFormSubmit);
+	</script>
+</head>
+
+<body>
+	<header>
+		<nav class="top-nav">
+			<div class="container">
+				<div class="nav-wrapper">
+					<div class="row">
+						<div class="col s12 m10 offset-m1">
+							<h1 class="header">Retail</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="container"><a href="#" data-target="nav-mobile"
+				class="top-nav sidenav-trigger full hide-on-large-only"><i class="material-icons">menu</i></a></div>
+		<ul id="nav-mobile" class="sidenav sidenav-fixed" style="transform: translateX(-105%);">
+			<li><a onclick="loadSection('dashboard')" class="dynamic_base_url">Dashboard</a></li>
+			<li><a onclick="loadSection('purchase')" class="dynamic_base_url">Add Product</a></li>
+			<li><a onclick="loadSection('sell')" class="dynamic_base_url">Sell Product</a></li>
+		</ul>
+	</header>
+
+	<main>
+		<?!= include(view); ?>
+	</main>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script>
+		function loadSection(section) {
+      google.script.run
+        .withSuccessHandler(refreshApp)
+        .renderContent(section)
+    }
+
+    function refreshApp(newHtml) {
+        document.open();
+        document.write(newHtml);
+        document.close();
+    }
+
+		document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
+	</script>
+</body>
+
+</html>
