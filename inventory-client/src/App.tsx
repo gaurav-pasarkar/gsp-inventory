@@ -3,6 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  function onLoadProducts(products: []) {
+    console.log('Products...', products)
+  }
+  // @ts-ignore
+  google.script.run.withSuccessHandler(onLoadProducts).getAvailableProducts();
   return (
     <div className="App">
       <header className="App-header">

@@ -568,7 +568,7 @@ module.exports = function (webpackEnv) {
           },
           isEnvProduction
             ? {
-                inlineSource: '.(js|css)$',
+                inlineSource: '.(js|css|svg)$',
                 minify: {
                   removeComments: true,
                   collapseWhitespace: true,
