@@ -1,2 +1,26 @@
 google-app-scripts/.clasp.json
 .idea
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+inventory-client/node_modules
+inventory-client/.pnp
+inventory-client/.pnp.js
+
+# testing
+inventory-client/coverage
+
+# production
+inventory-client/build
+
+# misc
+inventory-client/.DS_Store
+inventory-client/.env.local
+inventory-client/.env.development.local
+inventory-client/.env.test.local
+inventory-client/.env.production.local
+
+inventory-client/npm-debug.log*
+inventory-client/yarn-debug.log*
+inventory-client/yarn-error.log*
