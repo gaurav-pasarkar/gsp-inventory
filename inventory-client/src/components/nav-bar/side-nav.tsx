@@ -9,14 +9,24 @@ import AssessmentIcon from '@material-ui/icons/Assessment';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import ListItemText from "@material-ui/core/ListItemText";
 import React from "react";
-import useStyles from "../styles";
+import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 
-const SideNav = () => {
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+      toolbar: theme.mixins.toolbar,
+    }),
+);
+
+export const ToolBar = () => {
   const classes = useStyles();
 
+  return (<div className={classes.toolbar} />)
+}
+
+const SideNav = () => {
   return (
       <div>
-        <div className={classes.toolbar} />
+        <ToolBar/>
         <Divider />
         <List>
           <ListItem button key="Buy Product(s)">

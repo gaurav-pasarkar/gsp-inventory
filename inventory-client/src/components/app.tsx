@@ -2,11 +2,24 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import NavBar from "./nav-bar";
-import useStyles from "./styles";
+import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import {ToolBar} from "./nav-bar/side-nav";
 
 interface Props {
   window?: () => Window;
 }
+
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+      root: {
+        display: 'flex',
+      },
+      content: {
+        flexGrow: 1,
+        padding: theme.spacing(3),
+      },
+    }),
+);
 
 export default function App(props: Props) {
   const { window } = props;
@@ -17,7 +30,7 @@ export default function App(props: Props) {
         <CssBaseline />
         <NavBar window={window}/>
         <main className={classes.content}>
-          <div className={classes.toolbar} />
+          <ToolBar/>
           <Typography paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
             ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum

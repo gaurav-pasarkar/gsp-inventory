@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 <div>
   <div
-    className="makeStyles-toolbar-5"
+    className="makeStyles-toolbar-1"
   />
   <hr
     className="MuiDivider-root"

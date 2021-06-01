@@ -6,13 +6,41 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import Hidden from "@material-ui/core/Hidden";
 import Drawer from "@material-ui/core/Drawer";
-import useStyles from "../styles";
-import {useTheme} from "@material-ui/core/styles";
+import {createStyles, makeStyles, Theme, useTheme} from "@material-ui/core/styles";
 import SideNav from "./side-nav";
 
 interface Props {
   window?: () => Window;
 }
+
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+      drawer: {
+        [theme.breakpoints.up('sm')]: {
+          width: drawerWidth,
+          flexShrink: 0,
+        },
+      },
+      appBar: {
+        [theme.breakpoints.up('sm')]: {
+          width: `calc(100% - ${drawerWidth}px)`,
+          marginLeft: drawerWidth,
+        },
+      },
+      drawerPaper: {
+        width: drawerWidth,
+      },
+      menuButton: {
+        marginRight: theme.spacing(2),
+        [theme.breakpoints.up('sm')]: {
+          display: 'none',
+        },
+      }
+    }),
+);
+
 const NavBar = (props: Props) => {
   const { window } = props;
   const classes = useStyles();
