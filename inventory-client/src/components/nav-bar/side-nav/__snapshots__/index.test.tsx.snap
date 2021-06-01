@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`Side Nav renders correctly 1`] = `
 <div>
   <div
     className="makeStyles-toolbar-1"
@@ -15,6 +15,7 @@ exports[`renders correctly 1`] = `
       aria-disabled={false}
       className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
       onBlur={[Function]}
+      onClick={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -56,6 +57,7 @@ exports[`renders correctly 1`] = `
       aria-disabled={false}
       className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
       onBlur={[Function]}
+      onClick={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -97,6 +99,7 @@ exports[`renders correctly 1`] = `
       aria-disabled={false}
       className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
       onBlur={[Function]}
+      onClick={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -145,6 +148,7 @@ exports[`renders correctly 1`] = `
       aria-disabled={false}
       className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
       onBlur={[Function]}
+      onClick={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -186,6 +190,7 @@ exports[`renders correctly 1`] = `
       aria-disabled={false}
       className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
       onBlur={[Function]}
+      onClick={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}

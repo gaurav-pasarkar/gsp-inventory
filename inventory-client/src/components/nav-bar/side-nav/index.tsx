@@ -23,32 +23,38 @@ export const ToolBar = () => {
   return (<div className={classes.toolbar} />)
 }
 
-const SideNav = () => {
+export type PageId = 'buy_product' | 'sell_product' | 'inventory' | 'reports' | 'invoices';
+
+interface Props {
+  onItemSelect: (pageId: PageId) => void
+}
+
+const SideNav = ({ onItemSelect }: Props) => {
   return (
       <div>
         <ToolBar/>
         <Divider />
         <List>
-          <ListItem button key="Buy Product(s)">
+          <ListItem button key="Buy Product(s)" onClick={() => onItemSelect('buy_product')}>
             <ListItemIcon><AddIcon/></ListItemIcon>
             <ListItemText primary="Buy Product(s)" />
           </ListItem>
-          <ListItem button key="Sell Product(s)">
+          <ListItem button key="Sell Product(s)" onClick={() => onItemSelect('sell_product')}>
             <ListItemIcon><ShoppingCartIcon/></ListItemIcon>
             <ListItemText primary="Sell Product(s)" />
           </ListItem>
-          <ListItem button key="Inventory">
+          <ListItem button key="Inventory" onClick={() => onItemSelect('inventory')}>
             <ListItemIcon><StoreIcon/></ListItemIcon>
             <ListItemText primary="Inventory" />
           </ListItem>
         </List>
         <Divider />
         <List>
-          <ListItem button key="Reports">
+          <ListItem button key="Reports" onClick={() => onItemSelect('reports')}>
             <ListItemIcon><AssessmentIcon/></ListItemIcon>
             <ListItemText primary="Reports" />
           </ListItem>
-          <ListItem button key="Invoices">
+          <ListItem button key="Invoices" onClick={() => onItemSelect('invoices')}>
             <ListItemIcon><ReceiptIcon/></ListItemIcon>
             <ListItemText primary="Invoices" />
           </ListItem>

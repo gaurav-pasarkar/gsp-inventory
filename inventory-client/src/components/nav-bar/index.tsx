@@ -7,10 +7,11 @@ import React from "react";
 import Hidden from "@material-ui/core/Hidden";
 import Drawer from "@material-ui/core/Drawer";
 import {createStyles, makeStyles, Theme, useTheme} from "@material-ui/core/styles";
-import SideNav from "./side-nav";
+import SideNav, {PageId} from "./side-nav";
 
 interface Props {
   window?: () => Window;
+  onSideMenuSelect: (pageId: PageId) => void;
 }
 
 const drawerWidth = 240;
@@ -42,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const NavBar = (props: Props) => {
-  const { window } = props;
+  const { window, onSideMenuSelect } = props;
   const classes = useStyles();
   const theme = useTheme();
   const container = window !== undefined ? () => window().document.body : undefined;
@@ -50,13 +51,21 @@ const NavBar = (props: Props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
+    console.log('Clicked....')
     setMobileOpen(!mobileOpen);
   };
+
+  const onSelectInDesktop = (pageId: PageId) => {
+    handleDrawerToggle();
+    onSideMenuSelect(pageId);
+  }
+
   return (
       <>
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
             <IconButton
+                data-testid="menu-item"
                 color="inherit"
                 aria-label="open drawer"
                 edge="start"
@@ -70,10 +79,10 @@ const NavBar = (props: Props) => {
             </Typography>
           </Toolbar>
         </AppBar>
-        <nav className={classes.drawer} aria-label="mailbox folders">
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-          <Hidden smUp implementation="css">
+        <nav className={classes.drawer} aria-label="options">
+          <Hidden smUp implementation="js">
             <Drawer
+                data-testid="mobile_drawer"
                 container={container}
                 variant="temporary"
                 anchor={theme.direction === 'rtl' ? 'right' : 'left'}
@@ -83,21 +92,22 @@ const NavBar = (props: Props) => {
                   paper: classes.drawerPaper,
                 }}
                 ModalProps={{
-                  keepMounted: true, // Better open performance on mobile.
+                  keepMounted: true,
                 }}
             >
-              <SideNav/>
+              <SideNav onItemSelect={onSelectInDesktop}/>
             </Drawer>
           </Hidden>
-          <Hidden xsDown implementation="css">
+          <Hidden xsDown implementation="js">
             <Drawer
+                data-testid="desktop_drawer"
                 classes={{
                   paper: classes.drawerPaper,
                 }}
                 variant="permanent"
                 open
             >
-              <SideNav/>
+              <SideNav onItemSelect={onSideMenuSelect}/>
             </Drawer>
           </Hidden>
         </nav>
