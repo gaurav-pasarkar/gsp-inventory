@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import SideNav from "./side-nav";
+import SideNav from "./index";
 
 it('renders correctly', () => {
   const tree = renderer
