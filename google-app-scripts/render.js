@@ -25,8 +25,8 @@ function include(filename) {
 function submitProduct(form) {
   var ss = SpreadsheetApp.openByUrl(url);
   var ws = ss.getSheetByName("Inventory Log");
-  const { product_name, product_unit_price, product_quantity } = form;
-  const product = ["PURCHASE", `${product_name} (${product_unit_price}/-)`, product_unit_price, product_quantity, new Date()];
+  const { product_name, cost_price, selling_price, quantity } = form;
+  const product = ["PURCHASE", `${product_name} (${cost_price}/-)`, cost_price, selling_price, quantity, new Date()];
   ws.appendRow(product);
   Logger.log("Added product to inventory :" + JSON.stringify(product));
 }

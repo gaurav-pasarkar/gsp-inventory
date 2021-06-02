@@ -1,108 +1,127 @@
 import {Controller, useForm} from "react-hook-form";
-import {Button, Container, TextField} from "@material-ui/core";
+import {Button, TextField} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import createProduct from "../../../apis/create-product";
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
-    padding: theme.spacing(2),
+    alignItems: 'flex-start',
+    [theme.breakpoints.down('xs')]: {
+      '& .MuiTextField-root': {
+        width: '100%',
+      }
+    },
+
+    [theme.breakpoints.up('sm')]: {
+      '& .MuiTextField-root': {
+        width: '60%',
+      }
+    }
   },
-  halfWidth: {
-    width: '50ch',
-  },
+
+  cta: {
+    marginTop: theme.spacing(2)
+  }
 }));
+
+export interface Product {
+  productName: string,
+  costPrice: number,
+  sellingPrice: number,
+  quantity: number
+}
 
 const BuyProduct = () => {
   const classes = useStyles();
   const {handleSubmit, control} = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: Product) => {
+    await createProduct(data);
+    console.log('Product created....')
   };
 
   return (
-      <Container>
-        <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
-          <Controller
-              name="productName"
-              control={control}
-              defaultValue=""
-              render={({field: {onChange, value}, fieldState: {error}}) => (
-                  <TextField
-                      label="Product Name"
-                      fullWidth
-                      margin="normal"
-                      value={value}
-                      onChange={onChange}
-                      error={!!error}
-                      helperText={error ? error.message : null}
-                  />
-              )}
-              rules={{required: 'Product name required'}}
-          />
-          <Controller
-              name="costPrice"
-              control={control}
-              defaultValue=""
-              render={({field: {onChange, value}, fieldState: {error}}) => (
-                  <TextField
-                      type="number"
-                      className={classes.halfWidth}
-                      label="Cost Price"
-                      value={value}
-                      onChange={onChange}
-                      error={!!error}
-                      helperText={error ? error.message : null}
-                  />
-              )}
-              rules={{required: 'Cost price required'}}
-          />
-          <Controller
-              name="sellingPrice"
-              control={control}
-              defaultValue=""
-              render={({field: {onChange, value}, fieldState: {error}}) => (
-                  <TextField
-                      label="Selling Price"
-                      className={classes.halfWidth}
-                      value={value}
-                      onChange={onChange}
-                      error={!!error}
-                      helperText={error ? error.message : null}
-                      type="number"
-                  />
-              )}
-              rules={{required: 'Selling price required'}}
-          />
-          <Controller
-              name="password"
-              control={control}
-              defaultValue=""
-              render={({field: {onChange, value}, fieldState: {error}}) => (
-                  <TextField
-                      label="Password"
-                      value={value}
-                      onChange={onChange}
-                      error={!!error}
-                      helperText={error ? error.message : null}
-                      type="password"
-                  />
-              )}
-              rules={{required: 'Password required'}}
-          />
-          <div>
-            <Button variant="contained" onClick={() => console.log('Cancelled')}>
-              Cancel
-            </Button>
-            <Button type="submit" variant="contained" color="primary">
-              Signup
-            </Button>
-          </div>
-        </form>
-      </Container>
+      <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+            name="productName"
+            control={control}
+            defaultValue=""
+            render={({field: {onChange, value}, fieldState: {error}}) => (
+                <TextField
+                    label="Product Name"
+                    margin="normal"
+                    value={value}
+                    variant="outlined"
+                    onChange={onChange}
+                    error={!!error}
+                    helperText={error ? error.message : null}
+                />
+            )}
+            rules={{required: 'Product name required'}}
+        />
+        <Controller
+            name="costPrice"
+            control={control}
+            defaultValue=""
+            render={({field: {onChange, value}, fieldState: {error}}) => (
+                <TextField
+                    type="number"
+                    label="Cost Price(per unit)"
+                    margin="normal"
+                    value={value}
+                    variant="outlined"
+                    onChange={onChange}
+                    error={!!error}
+                    helperText={error ? error.message : null}
+                />
+            )}
+            rules={{required: 'Cost price(per unit) required'}}
+        />
+        <Controller
+            name="sellingPrice"
+            control={control}
+            defaultValue=""
+            render={({field: {onChange, value}, fieldState: {error}}) => (
+                <TextField
+                    label="Selling Price(per unit)"
+                    margin="normal"
+                    value={value}
+                    variant="outlined"
+                    onChange={onChange}
+                    error={!!error}
+                    helperText={error ? error.message : null}
+                    type="number"
+                />
+            )}
+            rules={{required: 'Selling price(per unit) required'}}
+        />
+        <Controller
+            name="quantity"
+            control={control}
+            defaultValue=""
+            render={({field: {onChange, value}, fieldState: {error}}) => (
+                <TextField
+                    label="Quantity"
+                    margin="normal"
+                    value={value}
+                    variant="outlined"
+                    onChange={onChange}
+                    error={!!error}
+                    helperText={error ? error.message : null}
+                    type="number"
+                />
+            )}
+            rules={{required: 'Quantity required'}}
+        />
+        <div className={classes.cta}>
+          <Button type="submit" variant="contained" color="primary" size="large">
+            Add product
+          </Button>
+        </div>
+      </form>
   );
 };
 

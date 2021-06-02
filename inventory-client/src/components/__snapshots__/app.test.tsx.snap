@@ -59,124 +59,156 @@ Object {
           <div
             class="MuiContainer-root MuiContainer-maxWidthLg"
           >
-            <div
-              class="MuiContainer-root MuiContainer-maxWidthLg"
+            <form
+              class="makeStyles-root-8"
             >
-              <form
-                class="makeStyles-root-8"
+              <div
+                class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
               >
-                <div
-                  class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                  data-shrink="false"
                 >
-                  <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-                    data-shrink="false"
-                  >
-                    Product Name
-                  </label>
-                  <div
-                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
-                  >
-                    <input
-                      aria-invalid="false"
-                      class="MuiInputBase-input MuiInput-input"
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                </div>
+                  Product Name
+                </label>
                 <div
-                  class="MuiFormControl-root MuiTextField-root makeStyles-halfWidth-9"
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
                 >
-                  <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-                    data-shrink="false"
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input"
+                    type="text"
+                    value=""
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
                   >
-                    Cost Price
-                  </label>
-                  <div
-                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                  >
-                    <input
-                      aria-invalid="false"
-                      class="MuiInputBase-input MuiInput-input"
-                      type="number"
-                      value=""
-                    />
-                  </div>
-                </div>
-                <div
-                  class="MuiFormControl-root MuiTextField-root makeStyles-halfWidth-9"
-                >
-                  <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-                    data-shrink="false"
-                  >
-                    Selling Price
-                  </label>
-                  <div
-                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                  >
-                    <input
-                      aria-invalid="false"
-                      class="MuiInputBase-input MuiInput-input"
-                      type="number"
-                      value=""
-                    />
-                  </div>
-                </div>
-                <div
-                  class="MuiFormControl-root MuiTextField-root"
-                >
-                  <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-                    data-shrink="false"
-                  >
-                    Password
-                  </label>
-                  <div
-                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                  >
-                    <input
-                      aria-invalid="false"
-                      class="MuiInputBase-input MuiInput-input"
-                      type="password"
-                      value=""
-                    />
-                  </div>
-                </div>
-                <div>
-                  <button
-                    class="MuiButtonBase-root MuiButton-root MuiButton-contained"
-                    tabindex="0"
-                    type="button"
-                  >
-                    <span
-                      class="MuiButton-label"
+                    <legend
+                      class="PrivateNotchedOutline-legendLabelled-12"
                     >
-                      Cancel
-                    </span>
-                    <span
-                      class="MuiTouchRipple-root"
-                    />
-                  </button>
-                  <button
-                    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-                    tabindex="0"
-                    type="submit"
-                  >
-                    <span
-                      class="MuiButton-label"
-                    >
-                      Signup
-                    </span>
-                    <span
-                      class="MuiTouchRipple-root"
-                    />
-                  </button>
+                      <span>
+                        Product Name
+                      </span>
+                    </legend>
+                  </fieldset>
                 </div>
-              </form>
-            </div>
+              </div>
+              <div
+                class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                  data-shrink="false"
+                >
+                  Cost Price(per unit)
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input"
+                    type="number"
+                    value=""
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="PrivateNotchedOutline-legendLabelled-12"
+                    >
+                      <span>
+                        Cost Price(per unit)
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+              <div
+                class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                  data-shrink="false"
+                >
+                  Selling Price(per unit)
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input"
+                    type="number"
+                    value=""
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="PrivateNotchedOutline-legendLabelled-12"
+                    >
+                      <span>
+                        Selling Price(per unit)
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+              <div
+                class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                  data-shrink="false"
+                >
+                  Quantity
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input"
+                    type="number"
+                    value=""
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="PrivateNotchedOutline-legendLabelled-12"
+                    >
+                      <span>
+                        Quantity
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+              <div
+                class="makeStyles-cta-9"
+              >
+                <button
+                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+                  tabindex="0"
+                  type="submit"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    Add product
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </form>
           </div>
         </main>
       </div>
@@ -237,124 +269,156 @@ Object {
         <div
           class="MuiContainer-root MuiContainer-maxWidthLg"
         >
-          <div
-            class="MuiContainer-root MuiContainer-maxWidthLg"
+          <form
+            class="makeStyles-root-8"
           >
-            <form
-              class="makeStyles-root-8"
+            <div
+              class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
             >
-              <div
-                class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                data-shrink="false"
               >
-                <label
-                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-                  data-shrink="false"
-                >
-                  Product Name
-                </label>
-                <div
-                  class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
-                >
-                  <input
-                    aria-invalid="false"
-                    class="MuiInputBase-input MuiInput-input"
-                    type="text"
-                    value=""
-                  />
-                </div>
-              </div>
+                Product Name
+              </label>
               <div
-                class="MuiFormControl-root MuiTextField-root makeStyles-halfWidth-9"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
               >
-                <label
-                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-                  data-shrink="false"
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiOutlinedInput-input"
+                  type="text"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
                 >
-                  Cost Price
-                </label>
-                <div
-                  class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                >
-                  <input
-                    aria-invalid="false"
-                    class="MuiInputBase-input MuiInput-input"
-                    type="number"
-                    value=""
-                  />
-                </div>
-              </div>
-              <div
-                class="MuiFormControl-root MuiTextField-root makeStyles-halfWidth-9"
-              >
-                <label
-                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-                  data-shrink="false"
-                >
-                  Selling Price
-                </label>
-                <div
-                  class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                >
-                  <input
-                    aria-invalid="false"
-                    class="MuiInputBase-input MuiInput-input"
-                    type="number"
-                    value=""
-                  />
-                </div>
-              </div>
-              <div
-                class="MuiFormControl-root MuiTextField-root"
-              >
-                <label
-                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-                  data-shrink="false"
-                >
-                  Password
-                </label>
-                <div
-                  class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                >
-                  <input
-                    aria-invalid="false"
-                    class="MuiInputBase-input MuiInput-input"
-                    type="password"
-                    value=""
-                  />
-                </div>
-              </div>
-              <div>
-                <button
-                  class="MuiButtonBase-root MuiButton-root MuiButton-contained"
-                  tabindex="0"
-                  type="button"
-                >
-                  <span
-                    class="MuiButton-label"
+                  <legend
+                    class="PrivateNotchedOutline-legendLabelled-12"
                   >
-                    Cancel
-                  </span>
-                  <span
-                    class="MuiTouchRipple-root"
-                  />
-                </button>
-                <button
-                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-                  tabindex="0"
-                  type="submit"
-                >
-                  <span
-                    class="MuiButton-label"
-                  >
-                    Signup
-                  </span>
-                  <span
-                    class="MuiTouchRipple-root"
-                  />
-                </button>
+                    <span>
+                      Product Name
+                    </span>
+                  </legend>
+                </fieldset>
               </div>
-            </form>
-          </div>
+            </div>
+            <div
+              class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                data-shrink="false"
+              >
+                Cost Price(per unit)
+              </label>
+              <div
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiOutlinedInput-input"
+                  type="number"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="PrivateNotchedOutline-legendLabelled-12"
+                  >
+                    <span>
+                      Cost Price(per unit)
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+            <div
+              class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                data-shrink="false"
+              >
+                Selling Price(per unit)
+              </label>
+              <div
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiOutlinedInput-input"
+                  type="number"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="PrivateNotchedOutline-legendLabelled-12"
+                  >
+                    <span>
+                      Selling Price(per unit)
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+            <div
+              class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                data-shrink="false"
+              >
+                Quantity
+              </label>
+              <div
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiOutlinedInput-input"
+                  type="number"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="PrivateNotchedOutline-legendLabelled-12"
+                  >
+                    <span>
+                      Quantity
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+            <div
+              class="makeStyles-cta-9"
+            >
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+                tabindex="0"
+                type="submit"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  Add product
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </form>
         </div>
       </main>
     </div>
