@@ -1,196 +1,202 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Buy product should render 1`] = `
-<form
-  className="makeStyles-root-1"
-  onSubmit={[Function]}
->
-  <div
-    className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+<div>
+  <form
+    className="makeStyles-root-1"
+    onSubmit={[Function]}
   >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-      data-shrink={false}
-    >
-      Product Name
-    </label>
     <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-      onClick={[Function]}
+      className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
     >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value=""
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
+      <label
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+        data-shrink={false}
       >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-5"
+        Product Name
+      </label>
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          autoFocus={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          data-testid="productName"
+          disabled={false}
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={false}
+          type="text"
+          value=""
+        />
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
         >
-          <span>
-            Product Name
-          </span>
-        </legend>
-      </fieldset>
+          <legend
+            className="PrivateNotchedOutline-legendLabelled-5"
+          >
+            <span>
+              Product Name
+            </span>
+          </legend>
+        </fieldset>
+      </div>
     </div>
-  </div>
-  <div
-    className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-      data-shrink={false}
-    >
-      Cost Price(per unit)
-    </label>
     <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-      onClick={[Function]}
+      className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
     >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="number"
-        value=""
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
+      <label
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+        data-shrink={false}
       >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-5"
+        Cost Price(per unit)
+      </label>
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          autoFocus={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          data-testid="costPrice"
+          disabled={false}
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={false}
+          type="number"
+          value=""
+        />
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
         >
-          <span>
-            Cost Price(per unit)
-          </span>
-        </legend>
-      </fieldset>
+          <legend
+            className="PrivateNotchedOutline-legendLabelled-5"
+          >
+            <span>
+              Cost Price(per unit)
+            </span>
+          </legend>
+        </fieldset>
+      </div>
     </div>
-  </div>
-  <div
-    className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-      data-shrink={false}
-    >
-      Selling Price(per unit)
-    </label>
     <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-      onClick={[Function]}
+      className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
     >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="number"
-        value=""
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
+      <label
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+        data-shrink={false}
       >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-5"
+        Selling Price(per unit)
+      </label>
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          autoFocus={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          data-testid="sellingPrice"
+          disabled={false}
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={false}
+          type="number"
+          value=""
+        />
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
         >
-          <span>
-            Selling Price(per unit)
-          </span>
-        </legend>
-      </fieldset>
+          <legend
+            className="PrivateNotchedOutline-legendLabelled-5"
+          >
+            <span>
+              Selling Price(per unit)
+            </span>
+          </legend>
+        </fieldset>
+      </div>
     </div>
-  </div>
-  <div
-    className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-      data-shrink={false}
-    >
-      Quantity
-    </label>
     <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-      onClick={[Function]}
+      className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
     >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="number"
-        value=""
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
+      <label
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+        data-shrink={false}
       >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-5"
+        Quantity
+      </label>
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          autoFocus={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          data-testid="quantity"
+          disabled={false}
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={false}
+          type="number"
+          value=""
+        />
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
         >
-          <span>
-            Quantity
-          </span>
-        </legend>
-      </fieldset>
+          <legend
+            className="PrivateNotchedOutline-legendLabelled-5"
+          >
+            <span>
+              Quantity
+            </span>
+          </legend>
+        </fieldset>
+      </div>
     </div>
-  </div>
-  <div
-    className="makeStyles-cta-2"
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="submit"
+    <div
+      className="makeStyles-cta-2"
     >
-      <span
-        className="MuiButton-label"
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="submit"
       >
-        Add product
-      </span>
-    </button>
-  </div>
-</form>
+        <span
+          className="MuiButton-label"
+        >
+          Add product
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
 `;
