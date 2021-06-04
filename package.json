@@ -1,0 +1,18 @@
+{
+  "name": "gsp-inventory",
+  "version": "1.0.0",
+  "description": "Inventory management app using google app scripts",
+  "main": "index.html",
+  "repository": "git@github.com:gaurav-pasarkar/gsp-inventory.git",
+  "author": "Gaurav  Pasarkar <gau041989@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@google/clasp": "^2.3.2"
+  },
+  "scripts": {
+    "gas:build": "cd inventory-client && yarn build && cp build/index.html ./google-app-scripts/",
+    "gas:copy": "mv inventory-client/build/index.html google-app-scripts",
+    "gas:deploy": "cd google-app-scripts && ../node_modules/.bin/clasp push",
+    "gas": "yarn gas:build && yarn gas:copy && yarn gas:deploy"
+  }
+}
