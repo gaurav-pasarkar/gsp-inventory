@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import App from "./components/app";
 import injectMockApis from "./test-utils/mock-api";
 
-if (process.env.REACT_APP_USE_API_STUBS === 'true') {
+if (process.env.NODE_ENV === 'development' && process.env.REACT_APP_USE_API_STUBS === 'true') {
   injectMockApis();
 }
 

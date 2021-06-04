@@ -10,7 +10,7 @@
     "@google/clasp": "^2.3.2"
   },
   "scripts": {
-    "gas:build": "cd inventory-client && yarn build && cp build/index.html ./google-app-scripts/",
+    "gas:build": "cd inventory-client && NODE_ENV=prd yarn build && cp build/index.html ./google-app-scripts/",
     "gas:copy": "mv inventory-client/build/index.html google-app-scripts",
     "gas:deploy": "cd google-app-scripts && ../node_modules/.bin/clasp push",
     "gas": "yarn gas:build && yarn gas:copy && yarn gas:deploy"
