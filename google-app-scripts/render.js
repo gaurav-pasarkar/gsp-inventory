@@ -36,8 +36,9 @@ function getAvailableProducts() {
   var ws = ss.getSheetByName("Available Inventory");
   const data = ws.getRange(2, 1).getDataRegion().getValues();
   return data.map(d => ({
-    name: d[0],
-    price: d[1],
-    quantity: d[2]
+    product_name: d[0],
+    cost_price: d[1],
+    selling_price: d[2],
+    quantity: d[3]
   })).slice(1);
 }

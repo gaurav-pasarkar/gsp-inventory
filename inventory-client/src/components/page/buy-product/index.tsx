@@ -1,7 +1,7 @@
 import {Controller, useForm} from "react-hook-form";
 import {Button, Snackbar, TextField} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import createProduct from "../../../apis/create-product";
+import {createProduct, Product} from "../../../apis/products";
 import {useState} from "react";
 
 const useStyles = makeStyles(theme => ({
@@ -27,13 +27,6 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2)
   }
 }));
-
-export interface Product {
-  productName: string,
-  costPrice: number,
-  sellingPrice: number,
-  quantity: number
-}
 
 const BuyProduct = () => {
   const classes = useStyles();

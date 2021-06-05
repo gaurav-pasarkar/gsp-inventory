@@ -8,6 +8,28 @@ const injectMockApis = () => {
           return {
             submitProduct: () => {
               cb();
+            },
+            getAvailableProducts: () => {
+              cb([
+                {
+                  product_name: 'Product 1',
+                  cost_price: 10,
+                  selling_price: 11,
+                  quantity: 100
+                },
+                {
+                  product_name: 'Product 2',
+                  cost_price: 5,
+                  selling_price: 6,
+                  quantity: 150
+                },
+                {
+                  product_name: 'Product 3',
+                  cost_price: 20,
+                  selling_price: 22,
+                  quantity: 50
+                }
+              ])
             }
           }
         }

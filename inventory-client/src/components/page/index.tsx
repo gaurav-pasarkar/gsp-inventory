@@ -1,6 +1,7 @@
 import {PageId} from "../nav-bar/side-nav";
 import {Container, Typography} from "@material-ui/core";
 import BuyProduct from "./buy-product";
+import SellProduct from "./sell-product";
 
 interface Props {
   pageId: PageId;
@@ -12,6 +13,14 @@ const Page = ({ pageId }: Props) => {
     return (
         <Container>
           <BuyProduct/>
+        </Container>
+    )
+  }
+
+  if(pageId === 'sell_product') {
+    return (
+        <Container>
+          <SellProduct/>
         </Container>
     )
   }
