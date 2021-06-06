@@ -1,6 +1,6 @@
 import matchSnapshot from "../../../test-utils/match-snapshot";
 import SellProduct from "./index";
-import {render, waitFor} from "@testing-library/react";
+import {fireEvent, render, waitFor} from "@testing-library/react";
 import {act} from "react-test-renderer";
 
 describe('Sell products', () => {
@@ -8,13 +8,40 @@ describe('Sell products', () => {
     matchSnapshot(<SellProduct />);
   });
 
-  it('should render Add product by default', async () => {
+  it('should render all products by default', async () => {
     await act(async () => {
-      const { getAllByText } = render(<SellProduct/>)
+      const { getByText } = render(<SellProduct/>)
 
       await waitFor(() => {
-        expect(getAllByText(/Product Name/).length).toBe(2)
+        expect(getByText(/Product 1/)).toBeInTheDocument()
+        expect(getByText(/Product 2/)).toBeInTheDocument()
+        expect(getByText(/Product 3/)).toBeInTheDocument()
       })
     });
   })
+
+  it('should render searched product', async () => {
+    await act(async () => {
+      const {getByTestId, getByText, queryByText} = render(<SellProduct/>)
+
+      await waitFor(() => {
+        expect(getByText(/Product 1/)).toBeInTheDocument()
+        expect(getByText(/Product 2/)).toBeInTheDocument()
+        expect(getByText(/Product 3/)).toBeInTheDocument()
+      })
+
+      fireEvent.change(getByTestId(/productSearch/), {
+        target: {
+          value: 'Product 2'
+        }
+      })
+
+      await waitFor(() => {
+        expect(queryByText(/Product 1/)).not.toBeInTheDocument()
+        expect(getByText(/Product 2/)).toBeInTheDocument()
+        expect(queryByText(/Product 3/)).not.toBeInTheDocument()
+      })
+    })
+  })
+
 })

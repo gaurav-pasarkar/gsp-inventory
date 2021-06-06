@@ -1,95 +1,81 @@
-import {Typography, withStyles} from "@material-ui/core";
-import MuiAccordion from '@material-ui/core/Accordion';
-import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
-import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
-import React, {useEffect, useState} from "react";
-import AddProducts from "./add-products";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import {getProducts, Product} from "../../../apis/products";
+import {TextField} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+import SearchIcon from '@material-ui/icons/Search';
+import CartProduct from "./cart-product";
 
-const Accordion = withStyles({
+const useStyles = makeStyles(theme => ({
   root: {
-    border: '1px solid rgba(0, 0, 0, .125)',
-    boxShadow: 'none',
-    '&:not(:last-child)': {
-      borderBottom: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    [theme.breakpoints.down('xs')]: {
+      '& .MuiTextField-root': {
+        width: '100%',
+      }
     },
-    '&:before': {
-      display: 'none',
-    },
-    '&$expanded': {
-      margin: 'auto',
-    },
-  },
-  expanded: {},
-})(MuiAccordion);
 
-export const AccordionSummary = withStyles({
-  root: {
-    backgroundColor: 'rgba(0, 0, 0, .03)',
-    borderBottom: '1px solid rgba(0, 0, 0, .125)',
-    marginBottom: -1,
-    minHeight: 56,
-    '&$expanded': {
-      minHeight: 56,
-    },
+    [theme.breakpoints.up('sm')]: {
+      '& .MuiTextField-root': {
+        width: '60%',
+      }
+    }
   },
-  content: {
-    '&$expanded': {
-      margin: '12px 0',
-    },
-  },
-  expanded: {},
-})(MuiAccordionSummary);
 
-export const AccordionDetails = withStyles((theme) => ({
-  root: {
-    padding: theme.spacing(2),
-  },
-}))(MuiAccordionDetails);
+  products: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+    },
 
-type CartState = 'add-to-cart' | 'review-cart' | 'checkout';
+    [theme.breakpoints.up('sm')]: {
+      width: '60%',
+    }
+  }
+}));
 
 const SellProduct = () => {
 
-  const [cartState, setCartState] = useState<CartState>('add-to-cart');
-  const [availableProducts, setAvailableProducts] = useState<Product[]>([])
+  const classes = useStyles();
+  const [availableProducts, setAvailableProducts] = useState<Product[]>([]);
+  const [searchedProducts, setSearchedProducts] = useState<Product[]>([])
 
   useEffect( () => {
     (async () => {
       const products = await getProducts()
       setAvailableProducts(products)
+      setSearchedProducts(products)
     })()
   }, [])
 
+  const onProductSearch = (searchKey: string) => {
+    const searched = availableProducts.filter(p => p.productName.includes(searchKey));
+    setSearchedProducts(searched);
+  }
+
   return (
-      <div>
-        <Accordion square expanded={cartState === 'add-to-cart'}>
-          <AddProducts availableProducts={availableProducts}/>
-        </Accordion>
-        <Accordion square expanded={cartState === 'review-cart'}>
-          <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-            <Typography>Collapsible Group Item #2</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-              sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion square expanded={cartState === 'checkout'}>
-          <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-            <Typography>Collapsible Group Item #3</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-              sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
+      <div className={classes.root}>
+        <TextField
+            label="Search products"
+            margin="normal"
+            variant="outlined"
+            onChange={(e: ChangeEvent<HTMLInputElement>) => onProductSearch(e.target.value)}
+            InputProps={{
+              startAdornment: <SearchIcon/>,
+            }}
+            inputProps={{
+              "data-testid": "productSearch",
+            }}
+        />
+        <div className={classes.products}>
+          {
+            searchedProducts.map(p => <CartProduct product={p} key={p.productName}/>)
+          }
+        </div>
       </div>
   );
 }
