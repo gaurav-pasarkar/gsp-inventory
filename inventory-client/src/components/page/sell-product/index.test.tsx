@@ -32,7 +32,7 @@ describe('Sell products', () => {
 
       fireEvent.change(getByTestId(/productSearch/), {
         target: {
-          value: 'Product 2'
+          value: 'pRODUct 2'
         }
       })
 

@@ -53,7 +53,8 @@ const SellProduct = () => {
   }, [])
 
   const onProductSearch = (searchKey: string) => {
-    const searched = availableProducts.filter(p => p.productName.includes(searchKey));
+    const searched = availableProducts
+      .filter(p => p.productName.toLowerCase().includes(searchKey.toLowerCase()));
     setSearchedProducts(searched);
   }
 
