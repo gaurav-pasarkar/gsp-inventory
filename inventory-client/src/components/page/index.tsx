@@ -1,5 +1,5 @@
 import {PageId} from "../nav-bar/side-nav";
-import {Container, Typography} from "@material-ui/core";
+import {Typography} from "@material-ui/core";
 import BuyProduct from "./buy-product";
 import SellProduct from "./sell-product";
 
@@ -11,24 +11,18 @@ const Page = ({ pageId }: Props) => {
 
   if(pageId === 'buy_product') {
     return (
-        <Container>
-          <BuyProduct/>
-        </Container>
+        <BuyProduct/>
     )
   }
 
   if(pageId === 'sell_product') {
     return (
-        <Container>
-          <SellProduct/>
-        </Container>
+        <SellProduct/>
     )
   }
 
   return (
-      <Container>
-        <Typography variant="h1"> Hello: {pageId} </Typography>
-      </Container>
+      <Typography variant="h1"> Hello: {pageId} </Typography>
   )
 }
 

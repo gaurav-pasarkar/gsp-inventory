@@ -1,9 +1,11 @@
-import React, {ChangeEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useReducer, useState} from "react";
 import {getProducts, Product} from "../../../apis/products";
 import {TextField} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import SearchIcon from '@material-ui/icons/Search';
 import CartProduct from "./cart-product";
+import CartSummary from "./cart-summary";
+import reducer from "./cart-reducer";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,10 +26,9 @@ const useStyles = makeStyles(theme => ({
     }
   },
 
-  products: {
+  container: {
     display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
     [theme.breakpoints.down('xs')]: {
       width: '100%',
     },
@@ -35,16 +36,28 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       width: '60%',
     }
+  },
+
+  products: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   }
 }));
+
+export interface ProductToAdd {
+  quantityToAdd: number,
+  product: Product
+}
 
 const SellProduct = () => {
 
   const classes = useStyles();
   const [availableProducts, setAvailableProducts] = useState<Product[]>([]);
-  const [searchedProducts, setSearchedProducts] = useState<Product[]>([])
+  const [searchedProducts, setSearchedProducts] = useState<Product[]>([]);
+  const [cartProducts, dispatch] = useReducer(reducer, new Map());
 
-  useEffect( () => {
+  useEffect(() => {
     (async () => {
       const products = await getProducts()
       setAvailableProducts(products)
@@ -72,10 +85,22 @@ const SellProduct = () => {
               "data-testid": "productSearch",
             }}
         />
-        <div className={classes.products}>
-          {
-            searchedProducts.map(p => <CartProduct product={p} key={p.productName}/>)
-          }
+        <div className={classes.container}>
+          <CartSummary products={cartProducts}/>
+          <div className={classes.products}>
+            {
+              searchedProducts.map(p => <CartProduct
+                  productName={p.productName}
+                  sellingPrice={p.sellingPrice}
+                  quantityInCart={cartProducts.get(p.productName)?.quantityToAdd || 0}
+                  isInCart={cartProducts.has(p.productName)}
+                  key={p.productName}
+                  onAdd={() => dispatch({ type: 'new', product: p})}
+                  onQuantityIncrement={() => dispatch({product: p, type: 'increase-quantity'})}
+                  onQuantityDecrement={() => dispatch({product: p, type: 'decrease-quantity'})}
+              />)
+            }
+          </div>
         </div>
       </div>
   );

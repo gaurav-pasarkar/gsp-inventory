@@ -1,40 +1,66 @@
 import {makeStyles} from "@material-ui/core/styles";
-import {Button, Card, CardActions, CardContent, Chip, Typography} from "@material-ui/core";
+import {Card, CardActions, CardContent, Typography} from "@material-ui/core";
 import React from "react";
-import {Product} from "../../../../apis/products";
+import ProductActions from "./product-actions";
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    width: 300,
     justifyContent: 'space-between',
     marginBottom: theme.spacing(1),
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      width: '40%',
+    }
+  },
+  content: {
+    width: '50%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  cta: {
+    width: '50%',
+    justifyContent: 'center'
   },
   priceChip: {
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
   }
 }));
 
 interface Props {
-  product: Product
+  productName: string,
+  sellingPrice: number,
+  quantityInCart: number,
+  onAdd: Function,
+  onQuantityIncrement: Function,
+  onQuantityDecrement: Function,
+  isInCart: boolean
 }
 
-const CartProduct = ({ product }: Props) => {
+const CartProduct = ({ productName, sellingPrice, onAdd, onQuantityIncrement, onQuantityDecrement, isInCart, quantityInCart }: Props) => {
   const classes = useStyles();
 
   return (
       <Card className={classes.root}>
-        <CardContent>
+        <CardContent className={classes.content}>
           <Typography gutterBottom component="span">
-            {product.productName}
+            {productName}
           </Typography>
-          <Chip className={classes.priceChip} variant="outlined" size="small" label={`${product.sellingPrice}/-`}/>
+          <Typography gutterBottom component="span">
+            ₹ {sellingPrice}
+          </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small" color="primary">
-            Add
-          </Button>
+        <CardActions className={classes.cta}>
+          <ProductActions
+              quantityInCart={quantityInCart}
+              onAdd={onAdd}
+              onQuantityIncrement={onQuantityIncrement}
+              onQuantityDecrement={onQuantityDecrement}
+              isInCart={isInCart}
+          />
         </CardActions>
       </Card>
   )

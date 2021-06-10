@@ -42,10 +42,10 @@ exports[`Sell products should render 1`] = `
       />
       <fieldset
         aria-hidden={true}
-        className="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
+        className="PrivateNotchedOutline-root-4 MuiOutlinedInput-notchedOutline"
       >
         <legend
-          className="PrivateNotchedOutline-legendLabelled-5 PrivateNotchedOutline-legendNotched-6"
+          className="PrivateNotchedOutline-legendLabelled-6 PrivateNotchedOutline-legendNotched-7"
         >
           <span>
             Search products
@@ -55,7 +55,59 @@ exports[`Sell products should render 1`] = `
     </div>
   </div>
   <div
-    className="makeStyles-products-2"
-  />
+    className="makeStyles-container-2"
+  >
+    <div
+      className="MuiPaper-root MuiCard-root makeStyles-root-8 MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        className="MuiCardContent-root"
+      >
+        <span
+          className="MuiTypography-root MuiTypography-body1"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-9"
+          >
+            Total: ₹ 
+            0
+             /-
+          </div>
+        </span>
+      </div>
+      <div
+        className="MuiCardActions-root MuiCardActions-spacing"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeSmall MuiButton-sizeSmall"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Checkout (
+            0
+            )
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="makeStyles-products-3"
+    />
+  </div>
 </div>
 `;
