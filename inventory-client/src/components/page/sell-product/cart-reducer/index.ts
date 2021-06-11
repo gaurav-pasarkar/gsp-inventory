@@ -35,7 +35,7 @@ const reducer = (cartProducts: Map<string, ProductToAdd>, {type, product}: Actio
         ...cartProduct,
         quantityToAdd: cartProduct.quantityToAdd - 1
       }
-      if (updatedCartProduct.quantityToAdd == 0) {
+      if (updatedCartProduct.quantityToAdd === 0) {
         cartProducts.delete(product.productName)
         return new Map(cartProducts);
       }

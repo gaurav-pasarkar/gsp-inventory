@@ -51,7 +51,6 @@ const NavBar = (props: Props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
-    console.log('Clicked....')
     setMobileOpen(!mobileOpen);
   };
 

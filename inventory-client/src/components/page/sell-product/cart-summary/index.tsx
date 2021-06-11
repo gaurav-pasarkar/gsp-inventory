@@ -1,10 +1,12 @@
 import {Box, Button, Card, CardActions, CardContent, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import React from "react";
-import {ProductToAdd} from "../index";
+import {ProductToAdd, View} from "../index";
 
-interface Props {
-  products: Map<string, ProductToAdd>
+export interface CartSummaryProps {
+  products: Map<string, ProductToAdd>,
+  onCheckout: Function,
+  view: View
 }
 
 const useStyles = makeStyles(theme => ({
@@ -15,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const CartSummary = ({ products }: Props) => {
+const CartSummary = ({ products, onCheckout, view }: CartSummaryProps) => {
   const classes = useStyles();
 
   const total = Array.from(products).reduce((acc, p) => {
@@ -32,9 +34,20 @@ const CartSummary = ({ products }: Props) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button variant="contained" size="small" color="primary">
-            Checkout ({products.size})
-          </Button>
+          {
+            view === 'checkout'
+              &&
+            <Button variant="contained" size="small" color="primary" onClick={() => onCheckout()}>
+              Checkout ({products.size})
+            </Button>
+          }
+          {
+            view === 'place-order'
+              &&
+            <Button variant="contained" size="small" color="primary">
+              Place order
+            </Button>
+          }
         </CardActions>
       </Card>
   )

@@ -39,6 +39,7 @@ exports[`Sell products should render 1`] = `
         onFocus={[Function]}
         required={false}
         type="text"
+        value=""
       />
       <fieldset
         aria-hidden={true}
@@ -82,6 +83,7 @@ exports[`Sell products should render 1`] = `
           className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeSmall MuiButton-sizeSmall"
           disabled={false}
           onBlur={[Function]}
+          onClick={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
