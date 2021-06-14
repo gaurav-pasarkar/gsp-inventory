@@ -7,7 +7,8 @@
   "author": "Gaurav  Pasarkar <gau041989@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@google/clasp": "^2.3.2"
+    "@google/clasp": "^2.3.2",
+    "@types/google-apps-script": "^1.0.34"
   },
   "scripts": {
     "gas:build": "cd inventory-client && NODE_ENV=prd yarn build && cp build/index.html ./google-app-scripts/",
