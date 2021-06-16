@@ -6,6 +6,7 @@ import {ProductToAdd, View} from "../index";
 export interface CartSummaryProps {
   products: Map<string, ProductToAdd>,
   onCheckout: Function,
+  onPlace: Function,
   view: View
 }
 
@@ -17,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const CartSummary = ({ products, onCheckout, view }: CartSummaryProps) => {
+const CartSummary = ({ products, onCheckout, onPlace, view }: CartSummaryProps) => {
   const classes = useStyles();
 
   const total = Array.from(products).reduce((acc, p) => {
@@ -44,7 +45,7 @@ const CartSummary = ({ products, onCheckout, view }: CartSummaryProps) => {
           {
             view === 'place-order'
               &&
-            <Button variant="contained" size="small" color="primary">
+            <Button variant="contained" size="small" color="primary" onClick={() => onPlace()}>
               Place order
             </Button>
           }

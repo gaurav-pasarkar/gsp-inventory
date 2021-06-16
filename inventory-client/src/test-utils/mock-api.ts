@@ -30,6 +30,9 @@ const injectMockApis = () => {
                   quantity: 50
                 }
               ])
+            },
+            sellProducts: () => {
+              cb();
             }
           }
         }

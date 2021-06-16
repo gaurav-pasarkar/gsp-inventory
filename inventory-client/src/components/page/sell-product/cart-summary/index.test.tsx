@@ -13,7 +13,8 @@ describe('Cart summary', () => {
           productName: 'Product 1',
           sellingPrice: 10,
           costPrice: 9,
-          quantity: 10
+          quantity: 10,
+          id: '123'
         }
       }
     ],
@@ -24,18 +25,21 @@ describe('Cart summary', () => {
           productName: 'Product 2',
           sellingPrice: 20,
           costPrice: 15,
-          quantity: 10
+          quantity: 10,
+          id: '234'
         }
       }
     ]
   ]);
 
   const mockOnCheckout = jest.fn();
+  const mockOnPlace = jest.fn();
 
   const props: CartSummaryProps = {
     products: productsInCart,
     view: 'checkout',
-    onCheckout: mockOnCheckout
+    onCheckout: mockOnCheckout,
+    onPlace: mockOnPlace
   }
 
   it('should render', () => {
@@ -65,5 +69,13 @@ describe('Cart summary', () => {
     const {getByText, queryByText} = render(<CartSummary {...props} view='place-order'/>);
     expect(queryByText(/Checkout \(\)/)).not.toBeInTheDocument();
     expect(getByText(/Place order/)).toBeInTheDocument();
+  });
+
+  it('should call onPlace when place order is clicked', () => {
+    const {getByText} = render(<CartSummary {...props} view='place-order'/>);
+
+    fireEvent.click(getByText(/Place order/));
+
+    expect(mockOnPlace).toHaveBeenCalled();
   });
 });

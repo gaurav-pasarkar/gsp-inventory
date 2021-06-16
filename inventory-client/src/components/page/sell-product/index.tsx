@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useEffect, useReducer, useState} from "react";
-import {getProducts, Product} from "../../../apis/products";
-import {TextField} from "@material-ui/core";
+import {getProducts, placeOrder, Product} from "../../../apis/products";
+import {Snackbar, TextField} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import SearchIcon from '@material-ui/icons/Search';
 import CartProduct from "./cart-product";
@@ -60,6 +60,7 @@ const SellProduct = () => {
   const [searchText, setSearchText] = useState('');
   const [view, setView] = useState<View>('checkout');
   const [cartProducts, dispatch] = useReducer(reducer, new Map());
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   useEffect(() => {
     (async () => {
@@ -84,6 +85,13 @@ const SellProduct = () => {
     setSearchText('');
   }
 
+  const onPlace = async () => {
+    await placeOrder(Array.from(cartProducts).map(cp => cp[1]));
+    setSubmitted(true);
+    setView('checkout');
+    dispatch({ type: 'reset'})
+  }
+
   const getProductsToShow = () => {
     if(view === 'checkout') {
       return searchedProducts;
@@ -96,6 +104,13 @@ const SellProduct = () => {
 
   return (
       <div className={classes.root}>
+        <Snackbar
+            anchorOrigin={{vertical: "bottom", horizontal: "center"}}
+            open={submitted}
+            onClose={() => setSubmitted(false)}
+            autoHideDuration={2000}
+            message="Product(s) sold successfully."
+        />
         <TextField
             label="Search products"
             margin="normal"
@@ -110,7 +125,7 @@ const SellProduct = () => {
             }}
         />
         <div className={classes.container}>
-          <CartSummary products={cartProducts} view={view} onCheckout={onCheckout}/>
+          <CartSummary products={cartProducts} view={view} onCheckout={onCheckout} onPlace={onPlace}/>
           <div className={classes.products}>
             {
               getProductsToShow().map(p => <CartProduct

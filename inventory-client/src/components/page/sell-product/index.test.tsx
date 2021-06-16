@@ -154,4 +154,35 @@ describe('Sell products', () => {
     });
   });
 
+  it('should sell products', async () => {
+    await act(async () => {
+      const wrapper = await initialise();
+      fireEvent.change(wrapper.getByTestId(/productSearch/), {
+        target: {
+          value: 'Product 2'
+        }
+      })
+      await waitFor(() => {
+        expect(wrapper.getByText(/Product 2/)).toBeInTheDocument()
+      })
+
+      fireEvent.click(wrapper.getByText(/Add/));
+      await waitFor(() => {
+        expect(wrapper.getByText(/Checkout \(1\)/)).toBeInTheDocument();
+      });
+
+      fireEvent.click(wrapper.getByText(/Checkout \(1\)/));
+      await waitFor(() => {
+        expect(wrapper.getByText(/Place order/)).toBeInTheDocument();
+      });
+
+      fireEvent.click(wrapper.getByText(/Place order/));
+      await waitFor(() => {
+        expect(wrapper.getByText(/Product\(s\) sold successfully./)).toBeInTheDocument();
+        expect(wrapper.getByText(/Total: ₹ 0 \/-/)).toBeInTheDocument();
+        expect(wrapper.getByText(/Checkout \(0\)/)).toBeInTheDocument();
+      })
+    });
+  });
+
 })

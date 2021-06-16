@@ -1,21 +1,12 @@
 const url = 'https://docs.google.com/spreadsheets/d/1HiQOgi54P2Bh-_atuIecvG95oREhvVweL-zHhkZFygA/edit#gid=0';
 
 function doGet() {
-  return render()
-}
-
-function render(section = "dashboard") {
-  var index = HtmlService.createTemplateFromFile('index');
-  index.view = section;
-  var template = index.evaluate();
+  const index = HtmlService.createTemplateFromFile('index');
+  const template = index.evaluate();
   template.addMetaTag('viewport', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
   template.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 
   return template;
-}
-
-function renderContent(section = "dashboard") {
-  return render(section).getContent();
 }
 
 function include(filename) {
@@ -23,22 +14,53 @@ function include(filename) {
 }
 
 function submitProduct(form) {
-  var ss = SpreadsheetApp.openByUrl(url);
-  var ws = ss.getSheetByName("Inventory Log");
-  const { product_name, cost_price, selling_price, quantity } = form;
-  const product = ["PURCHASE", `${product_name} (${cost_price}/-)`, cost_price, selling_price, quantity, new Date()];
-  ws.appendRow(product);
-  Logger.log("Added product to inventory :" + JSON.stringify(product));
+  buySellProduct("PURCHASE", form);
+}
+
+function buySellProduct(action, { product_name, cost_price, selling_price, quantity }) {
+  const generateHash = s => s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+
+  const ss = SpreadsheetApp.openByUrl(url);
+  const ws = ss.getSheetByName("Inventory Log");
+  const p = [action, product_name, cost_price, selling_price, quantity, new Date(), generateHash(`${product_name}_${cost_price}_${selling_price}`)];
+  ws.appendRow(p);
+  Logger.log(`${action} product :` + JSON.stringify(p));
+}
+
+function sellProducts(products = []) {
+
+  const existingProducts = getAvailableProducts()
+    .reduce((acc, a) => {
+      acc[a.id] = a
+      return acc;
+    }, {})
+
+  const notAvailableProducts = products.filter(p => !(existingProducts[p.id] && p.quantity <= existingProducts[p.id].quantity));
+  if(notAvailableProducts.length > 0) {
+    throw {
+      type: 'QUANTITY_NOT_AVAILABLE',
+      unavailableProducts: notAvailableProducts
+    }
+  } else {
+    products.forEach(p => {
+      buySellProduct("SALES", { ...existingProducts[p.id], quantity: - p.quantity });
+    })
+  }
+}
+
+function getAvailableInventory() {
+  const ss = SpreadsheetApp.openByUrl(url);
+  const ws = ss.getSheetByName("Available Inventory");
+  const data = ws.getRange(2, 1).getDataRegion().getValues();
+  return data.slice(1);
 }
 
 function getAvailableProducts() {
-  var ss = SpreadsheetApp.openByUrl(url);
-  var ws = ss.getSheetByName("Available Inventory");
-  const data = ws.getRange(2, 1).getDataRegion().getValues();
-  return data.map(d => ({
-    product_name: d[0],
-    cost_price: d[1],
-    selling_price: d[2],
-    quantity: d[3]
-  })).slice(1);
+  return getAvailableInventory().map(d => ({
+    id: d[0],
+    product_name: d[1],
+    cost_price: d[2],
+    selling_price: d[3],
+    quantity: d[4]
+  }));
 }

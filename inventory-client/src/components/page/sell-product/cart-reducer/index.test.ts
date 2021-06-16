@@ -7,14 +7,16 @@ describe('Cart reducer', () => {
     productName: 'Product 1',
     quantity: 10,
     costPrice: 10,
-    sellingPrice: 11
+    sellingPrice: 11,
+    id: '123'
   };
 
   const product2 = {
     productName: 'Product 2',
     quantity: 11,
     costPrice: 5,
-    sellingPrice: 6
+    sellingPrice: 6,
+    id: '234'
   };
 
   it('should add new product to cart', () => {
@@ -126,4 +128,21 @@ describe('Cart reducer', () => {
       });
     });
   });
+
+  it('should reset the cart', () => {
+    const cartProduct1 = {
+      quantityToAdd: 1,
+      product: product1
+    };
+
+    const cartProducts = new Map<string, ProductToAdd>([
+      [ cartProduct1.product.productName, cartProduct1]
+    ]);
+
+    const state = reducer(cartProducts, {
+      type: "reset"
+    });
+
+    expect(state.size).toBe(0);
+  })
 });
