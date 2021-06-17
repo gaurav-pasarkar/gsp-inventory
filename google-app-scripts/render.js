@@ -1,12 +1,27 @@
 const url = 'https://docs.google.com/spreadsheets/d/1HiQOgi54P2Bh-_atuIecvG95oREhvVweL-zHhkZFygA/edit#gid=0';
 
 function doGet() {
-  const index = HtmlService.createTemplateFromFile('index');
-  const template = index.evaluate();
-  template.addMetaTag('viewport', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
-  template.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  if(isUserAuthorised()) {
+    const index = HtmlService.createTemplateFromFile('index');
+    const template = index.evaluate();
+    template.addMetaTag('viewport', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+    template.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+    return template;
+  } else {
+    const accessDenied = HtmlService.createTemplateFromFile('access_denied');
+    const template = accessDenied.evaluate();
+    template.addMetaTag('viewport', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+    template.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+    return template;
+  }
+}
 
-  return template;
+function isUserAuthorised() {
+  const ss = SpreadsheetApp.openByUrl(url);
+  const ws = ss.getSheetByName("Authorised Users");
+  const data = ws.getRange(2, 1).getDataRegion().getValues();
+  const authorisedUsers = data.slice(1).map(users => users[0]);
+  return authorisedUsers.includes(Session.getActiveUser().getEmail());
 }
 
 function include(filename) {
